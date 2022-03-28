@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "97029235242",
+    "project_id": "techconnet-5e424",
+    "storage_bucket": "techconnet-5e424.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97029235242:android:fe25f112c77af8ad21d953",
+        "android_client_info": {
+          "package_name": "com.example.tech_connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97029235242-igt5chssn7q90lm0jas5uc63l8cpf39g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tech_connect",
+            "certificate_hash": "28a7fc293d324610378fd4a353034397a07d2f06"
+          }
+        },
+        {
+          "client_id": "97029235242-k852c9qoouicm1ll13hmpmgm0gelobab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsZ7W2qrByIkLs9Z-KYsfvLLFoV2WX1gQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97029235242-k852c9qoouicm1ll13hmpmgm0gelobab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
