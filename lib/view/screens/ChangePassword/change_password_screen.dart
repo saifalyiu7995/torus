@@ -37,13 +37,25 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomTextFormField(
+                            textFormTitle: "OTP",
+                            isFilled: true,
+                            controller: value.otpController,
+                            inputType: TextInputType.number,
+                            maxLength: 6,
+                            autoValidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (v) => value.otpValidator(value: v),
+                            hintText: "OTP",
+                            iconData: Icons.pin,
+                            obscureText: false),
+                        CustomTextFormField(
                             textFormTitle: "New Password",
                             isFilled: true,
                             controller: value.newPasswordController,
                             inputType: TextInputType.visiblePassword,
                             autoValidateMode:
                                 AutovalidateMode.onUserInteraction,
-                            validator: (v) => value.paswordValidator(value: v),
+                            validator: (v) => value.passwordValidator(value: v),
                             hintText: "New Password",
                             iconData: Icons.lock_rounded,
                             obscureText: true),

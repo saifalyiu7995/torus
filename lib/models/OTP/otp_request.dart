@@ -1,18 +1,15 @@
 class OTPRequest {
-  String? otp;
-  String? token;
+  String? email;
 
-  OTPRequest({this.otp, this.token});
+  OTPRequest({this.email});
 
   OTPRequest.fromJson(Map<String, dynamic> json) {
-    otp = json['otp'];
-    token = json['token'];
+    email = json['email'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['otp'] = otp;
-    data['token'] = token;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
     return data;
   }
 }

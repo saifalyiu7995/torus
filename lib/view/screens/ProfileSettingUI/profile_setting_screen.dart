@@ -115,6 +115,8 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                               CrossAxisAlignment.center,
                                           children: <Widget>[
                                             CustomDropDown(
+                                                dropDownHeight: 4,
+                                                dropDownWidth: 25,
                                                 onChangeHandler:
                                                     onChangeHandler,
                                                 dropdownItems: dropdownItems,
@@ -124,6 +126,8 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                               width: 1.w,
                                             ),
                                             CustomDropDown(
+                                                dropDownHeight: 4,
+                                                dropDownWidth: 25,
                                                 onChangeHandler:
                                                     onChangeHandler,
                                                 dropdownItems: dropdownItems,
@@ -151,7 +155,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                   Step(
                                       isActive: _index >= 1,
                                       title: const Text(
-                                        'Add Tools',
+                                        'Add Programmers',
                                         style: TextStyle(
                                           fontSize: stepTitleFont,
                                           fontFamily: AppConstants.textFont,
@@ -179,7 +183,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                                     .visiblePassword,
                                                 inputAction:
                                                     TextInputAction.done,
-                                                hintText: "Add tool",
+                                                hintText: "Add Programmers",
                                               ),
                                             ),
                                             SizedBox(
@@ -237,7 +241,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                                 title: Transform.translate(
                                                   offset: const Offset(-12, 0),
                                                   child: Text(
-                                                    'Agrees to notify through emails',
+                                                    'I accept email notifications',
                                                     style: TextStyle(
                                                       fontSize: 8.sp,
                                                       fontFamily:

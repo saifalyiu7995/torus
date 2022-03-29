@@ -3,6 +3,7 @@ import 'package:tech_connect/Routes/app_navigation.dart';
 import 'package:tech_connect/Routes/app_navigation_routes.dart';
 import 'package:tech_connect/Services/Register/register_provider.dart';
 import 'package:tech_connect/models/Register/register_responsel.dart';
+import 'package:tech_connect/utils/app/app_colors.dart';
 import 'package:tech_connect/utils/app/app_constant.dart';
 import 'package:tech_connect/view/widgets/CustomDialogBoxes/loading_dialogbox.dart';
 import 'package:tech_connect/view/widgets/CustomSnackbar/custom_snackbar.dart';
@@ -51,7 +52,7 @@ class RegisterProvider extends ChangeNotifier {
 
   String? nameValidator({String? value, String? title = "Name"}) {
     if (value!.isNotEmpty) {
-      if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(value)) {
+      if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
         return "Invalid Input";
       } else {
         return null;
@@ -75,8 +76,8 @@ class RegisterProvider extends ChangeNotifier {
 
   String? contactValidator({String? value, String? title = "Name"}) {
     if (value!.isNotEmpty) {
-      if (value.length < 11) {
-        return "Invalid Number* (Min 11 numbers)";
+      if (value.length > 15 || value.length < 9) {
+        return "Invalid Number* (Min 9 Max 15 numbers)";
       } else {
         return null;
       }
@@ -111,16 +112,33 @@ class RegisterProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> registerAPI() async {
+  Future<void> registerAPI({
+    String? firstName,
+    String? lastName,
+    String? password,
+    String? company,
+    String? contact,
+    String? email,
+    String? country,
+  }) async {
     DialogBuilder.showLoadingIndicator();
     try {
       if (formKey.currentState!.validate()) {
         RegisterResponse response = await RegisterService.registerRequest(
-            emailController.text, passwordController.text);
+            company: company,
+            contact: contact,
+            country: country,
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName);
 
-        if (response.status!) {
+        if (response.status == "OK") {
+          showSnackBar(response.message!, color: AppColors.greenFontColor);
           Future.delayed(const Duration(milliseconds: 100),
               () => AppNavigation.removeAllRoutes());
+        } else {
+          showSnackBar(response.message!, color: AppColors.valuesRedColors);
         }
       }
     } catch (ex) {

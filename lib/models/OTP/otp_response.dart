@@ -1,24 +1,39 @@
 class OTPResponse {
-  bool? status;
   String? message;
-  String? token;
-  String? id;
+  String? status;
+  Data? data;
 
-  OTPResponse({this.status, this.message, this.token, this.id});
+  OTPResponse({this.message, this.status, this.data});
 
   OTPResponse.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
     message = json['message'];
-    token = json['token'];
-    id = json['id'];
+    status = json['status'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['status'] = status;
-    data['message'] = message;
-    data['token'] = token;
-    data['id'] = id;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['status'] = this.status;
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    return data;
+  }
+}
+
+class Data {
+  String? email;
+
+  Data({this.email});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
     return data;
   }
 }

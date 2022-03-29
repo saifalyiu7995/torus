@@ -4,11 +4,11 @@ import 'package:tech_connect/utils/network/api_base_helper.dart';
 
 class ChangeService {
   static Future<ChangeResponse> changeRequest(
-      {String? password, String? token}) async {
+      {String? otp, String? password, String? token, String? email}) async {
     try {
-      ChangeRequest _authRequest =
-          ChangeRequest(password: password, token: token);
-      var response = await ApiBaseHelper.httpPostRequest("emailVerify",
+      ChangePasswordRequest _authRequest = ChangePasswordRequest(
+          otp: otp, newPassword: password, userEmail: email);
+      var response = await ApiBaseHelper.httpPostRequest("api/password/reset",
           body: _authRequest.toJson());
       return ChangeResponse.fromJson(response);
     } catch (exception) {

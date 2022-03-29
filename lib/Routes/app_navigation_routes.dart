@@ -23,4 +23,6 @@ class AppNavRoutes {
   static const logEditRoute = '/logEdit';
   static const fingerprintRegistrationRoute = '/fingerprintRegistration';
   static const profileSettingScreenRoute = '/profileSettingScreen';
+  static const addEditServiceScreenRoute = '/addEditServiceScreen';
+  static const myServicesScreenRoute = '/myServicesScreen';
 }

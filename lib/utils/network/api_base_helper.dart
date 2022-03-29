@@ -38,8 +38,31 @@ class ApiBaseHelper {
           .post(Uri.parse('$base$endPoint'), body: jsonEncode(body), headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
+        // 'Authorization': 'Bearer $token',
       });
+    } on SocketException catch (_) {
+      throw FetchDataException(AppConstants.noInternetMsg);
+    } on FormatException catch (_) {
+      throw FetchDataException(AppConstants.badResponseFormat);
+    }
+    return _returnResponse(response);
+  }
+
+  static Future<dynamic> httpPostRequestUrlEnc(String endPoint,
+      {Object? body,
+      String? token,
+      String base = AppConstants.apiBaseURL}) async {
+    print(jsonEncode(body));
+    http.Response response;
+    try {
+      response = await client.post(
+        Uri.parse('$base$endPoint'),
+        body: body,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        encoding: Encoding.getByName('utf-8'),
+      );
     } on SocketException catch (_) {
       throw FetchDataException(AppConstants.noInternetMsg);
     } on FormatException catch (_) {

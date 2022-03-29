@@ -42,7 +42,7 @@ class AuthProvider extends ChangeNotifier {
     } else {
       String? token = await AppLocalData()
           .getStringPrefValue(key: AppConstants.userTokenKey);
-      if (token != null || token != "") {
+      if (token == null || token == "") {
         Future.delayed(const Duration(microseconds: 100),
             () => AppNavigation.pushReplacementTo(AppNavRoutes.authRoute));
       } else {
@@ -143,11 +143,12 @@ class AuthProvider extends ChangeNotifier {
         response = await AuthService.loginRequest(
             emailController.text, passwordController.text);
         await AppLocalData().setStringPrefValue(
-            key: AppConstants.userTokenKey, value: response.token!);
+            key: AppConstants.userTokenKey, value: response.data!.accessToken!);
         await AppLocalData().setStringPrefValue(
-            key: AppConstants.userName, value: response.data!.userName!);
+            key: AppConstants.userName, value: response.data!.fullname!);
         await AppLocalData().setStringPrefValue(
-            key: AppConstants.userImage, value: response.data!.imageUrl!);
+            key: AppConstants.userImage,
+            value: "https://www.w3schools.com/howto/img_avatar.png");
         Future.delayed(const Duration(milliseconds: 100),
             () => AppNavigation.pushReplacementTo(AppNavRoutes.dashboardRoute));
       }

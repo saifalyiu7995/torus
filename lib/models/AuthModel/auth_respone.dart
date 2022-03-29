@@ -1,48 +1,42 @@
 class AuthResponse {
-  bool? status;
   String? message;
-  String? token;
+  String? status;
   Data? data;
-  String? id;
 
-  AuthResponse({this.status, this.message, this.token, this.data, this.id});
+  AuthResponse({this.message, this.status, this.data});
 
   AuthResponse.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
     message = json['message'];
-    token = json['token'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    id = json['id'];
+    status = json['status'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['status'] = status;
-    data['message'] = message;
-    data['token'] = token;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['status'] = this.status;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['id'] = id;
     return data;
   }
 }
 
 class Data {
-  String? userName;
-  String? imageUrl;
+  String? accessToken;
+  String? fullname;
 
-  Data({this.userName, this.imageUrl});
+  Data({this.accessToken, this.fullname});
 
   Data.fromJson(Map<String, dynamic> json) {
-    userName = json['userName'];
-    imageUrl = json['imageUrl'];
+    accessToken = json['access_token'];
+    fullname = json['fullname'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['userName'] = userName;
-    data['imageUrl'] = imageUrl;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['access_token'] = this.accessToken;
+    data['fullname'] = this.fullname;
     return data;
   }
 }

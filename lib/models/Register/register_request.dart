@@ -1,36 +1,40 @@
-class RegisterRequet {
+class RegisterRequest {
+  String? contactNo;
+  String? companyName;
+  String? country;
   String? firstName;
   String? lastName;
-  String? email;
   String? password;
-  String? contact;
-  String? country;
+  String? email;
 
-  RegisterRequet(
-      {this.firstName,
+  RegisterRequest(
+      {this.contactNo,
+      this.companyName,
+      this.country,
+      this.firstName,
       this.lastName,
-      this.email,
       this.password,
-      this.contact,
-      this.country});
+      this.email});
 
-  RegisterRequet.fromJson(Map<String, dynamic> json) {
+  RegisterRequest.fromJson(Map<String, dynamic> json) {
+    contactNo = json['contactNo'];
+    companyName = json['companyName'];
+    country = json['country'];
     firstName = json['firstName'];
     lastName = json['lastName'];
-    email = json['email'];
     password = json['password'];
-    contact = json['contact'];
-    country = json['country'];
+    email = json['email'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['firstName'] = firstName;
-    data['lastName'] = lastName;
-    data['email'] = email;
-    data['password'] = password;
-    data['contact'] = contact;
-    data['country'] = country;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['contactNo'] = this.contactNo;
+    data['companyName'] = this.companyName;
+    data['country'] = this.country;
+    data['firstName'] = this.firstName;
+    data['lastName'] = this.lastName;
+    data['password'] = this.password;
+    data['email'] = this.email;
     return data;
   }
 }

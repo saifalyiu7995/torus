@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:tech_connect/utils/app/app_colors.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomDropDown extends StatelessWidget {
   final Function(String) onChangeHandler;
   final String initialValue;
   final List<String> dropdownItems;
+  final double dropDownHeight;
+  final double dropDownWidth;
 
   const CustomDropDown(
       {Key? key,
       required this.onChangeHandler,
       required this.dropdownItems,
-      required this.initialValue})
+      required this.initialValue,
+      required this.dropDownHeight,
+      required this.dropDownWidth})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 35,
-        width: 85,
+        height: dropDownHeight.h,
+        width: dropDownWidth.w,
+        //color: AppColors.primaryColor.withOpacity(0.7),
         padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
         decoration: BoxDecoration(
             color: AppColors.primaryColor.withOpacity(0.07),

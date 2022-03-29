@@ -8,8 +8,9 @@ class AuthService {
     try {
       AuthRequest _authRequest =
           AuthRequest(email: username, password: password);
-      var response = await ApiBaseHelper.httpPostRequest("auth",
-          body: _authRequest.toJson());
+      var body = _authRequest.toJson();
+      var response = await ApiBaseHelper.httpPostRequestUrlEnc("login",
+          body: body.keys.map((key) => "$key=${body[key]}").join("&"));
       return AuthResponse.fromJson(response);
     } catch (exception) {
       throw '$exception';

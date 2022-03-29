@@ -59,7 +59,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           fontWeight: FontWeight.w600,
                           minSize: Size(100.w, 5.h),
                           title: "Submit",
-                          onPressed: () => value.forgetAPI(),
+                          onPressed: () => value.otpAPI(),
                         )),
                         SizedBox(
                           height: 7.h,

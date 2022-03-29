@@ -1,6 +1,5 @@
 class AppConstants {
-  static const String apiBaseURL =
-      "https://623588e4163bf7c4745be78e.mockapi.io/api/v1/";
+  static const String apiBaseURL = "https://tech-connect-back.herokuapp.com/";
 
   static const String exceptionMessage =
       "Something Went Wrong, Please Try Again Later";

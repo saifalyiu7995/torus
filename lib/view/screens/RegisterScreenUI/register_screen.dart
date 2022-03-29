@@ -80,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             inputType: TextInputType.number,
                             autoValidateMode:
                                 AutovalidateMode.onUserInteraction,
-                            maxLength: 11,
+                            maxLength: 15,
                             validator: (v) => value.contactValidator(
                                 value: v, title: "Contact"),
                             hintText: "Contact",
@@ -305,7 +305,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fontWeight: FontWeight.w600,
                           minSize: Size(100.w, 5.h),
                           title: "Register",
-                          onPressed: () => value.registerAPI(),
+                          onPressed: () => value.registerAPI(
+                              company: value.companyController.text,
+                              contact: value.contactController.text,
+                              country: value.dropDownValue,
+                              email: value.emailController.text,
+                              firstName: value.firstNameController.text,
+                              lastName: value.lastNameController.text,
+                              password: value.confirmPasswordController.text),
                         )),
 
                         Padding(
